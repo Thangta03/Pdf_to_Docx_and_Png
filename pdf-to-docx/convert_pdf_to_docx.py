@@ -16,7 +16,19 @@ def select_pdf_file(pdf_files):
 
 def convert_pdf_to_docx(pdf_file):
     """Convert the selected PDF to a .docx file while preserving the initial format and tables."""
-    docx_file = pdf_file.replace('.pdf', '.docx')
+    # Create "transformed file" directory if it does not exist
+    transformed_dir = "transformed file"
+    if not os.path.exists(transformed_dir):
+        os.makedirs(transformed_dir)
+    
+    # Create a new folder named after the converted file (without the .docx extension) inside the "transformed file" directory
+    file_name_without_extension = os.path.splitext(pdf_file)[0]
+    final_dir = os.path.join(transformed_dir, file_name_without_extension)
+    if not os.path.exists(final_dir):
+        os.makedirs(final_dir)
+    
+    # Update the file path for saving the converted .docx file to be within the newly created folder
+    docx_file = os.path.join(final_dir, file_name_without_extension + '.docx')
     cv = Converter(pdf_file)
     cv.convert(docx_file, start=0, end=None)
     cv.close()

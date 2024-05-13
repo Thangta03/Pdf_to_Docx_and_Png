@@ -11,3 +11,7 @@ python convert_pdf_to_docx.py
 ```
 
 This command will list all PDF files in the current directory. Follow the prompts to select a file and convert it to .docx format.
+
+### New Folder Creation and File Placement Process
+
+As part of the conversion process, the script now creates a folder named "transformed file" in the current directory. Inside this folder, a new folder with the name of the converted file (minus the .docx extension) is created. The converted .docx file is then saved inside its corresponding named folder within "transformed file". This organization helps in managing the converted files more efficiently.

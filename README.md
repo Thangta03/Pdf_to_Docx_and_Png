@@ -25,4 +25,8 @@ This will generate a .docx document that includes all the detailed explanations 
 
 The `graph.xlsx` file contains an Excel graph that visually represents the key data and concepts from the analysis. To view and interpret this graph, simply open the file with any software that supports Excel formats. Pay close attention to the labeled axes and data points to fully understand the data presented.
 
+## Using the `convert_pdf_to_docx.py` Script
+
+As part of the conversion process, the script now creates a folder named "transformed file" in the current directory. Inside this folder, a new folder with the name of the converted file (minus the .docx extension) is created. The converted .docx file is then saved inside its corresponding named folder within "transformed file". This organization helps in managing the converted files more efficiently.
+
 By utilizing these tools, users can efficiently convert PDF documents into detailed .docx analyses and visually represent data through Excel graphs, enhancing the understanding and presentation of complex concepts.
