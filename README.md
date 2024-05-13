@@ -29,4 +29,14 @@ The `graph.xlsx` file contains an Excel graph that visually represents the key d
 
 As part of the conversion process, the script now creates a folder named "transformed file" in the current directory. Inside this folder, a new folder with the name of the converted file (minus the .docx extension) is created. The converted .docx file and extracted .png images are then saved inside their corresponding named folder within "transformed file". This organization helps in managing the converted files and images more efficiently.
 
+## Error Handling Strategies
+
+This section outlines strategies for handling common errors related to package dependencies and directory creation failures, enhancing the reliability and user experience of the conversion tools:
+
+- **Package Dependencies**: If you encounter errors related to missing packages, the script attempts to automatically install them. However, if automatic installation fails, please ensure you have the necessary permissions and try installing the packages manually. Detailed error messages are provided to assist in troubleshooting.
+
+- **Directory Creation Failures**: Before creating new directories for the converted files and images, the script checks if the directories already exist to avoid unnecessary errors. If you encounter errors during directory creation, please check the permissions of your current directory and ensure there is enough space available.
+
+By following these strategies, users can mitigate common issues encountered during the PDF to .docx and .png conversion process.
+
 By utilizing these tools, users can efficiently convert PDF documents into detailed .docx analyses, extract images as .png files, and visually represent data through Excel graphs, enhancing the understanding and presentation of complex concepts.
