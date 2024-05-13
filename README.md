@@ -1,13 +1,13 @@
-# PDF to .docx Conversion Tools
+# PDF to .docx and .png Conversion Tools
 
-This repository now includes a set of tools designed to facilitate the conversion of PDF documents into .docx format, allowing for a detailed analysis of concepts with the added benefit of creating visual representations through Excel graphs.
+This repository now includes a set of tools designed to facilitate the conversion of PDF documents into .docx format and the extraction of images from PDFs to save them as .png files. This allows for a detailed analysis of concepts with the added benefit of creating visual representations through Excel graphs and organizing images in corresponding folders.
 
 ## pdf-to-docx Directory
 
 Within the `pdf-to-docx` directory, you will find several key components that make up the conversion toolkit:
 
-- `README.md`: Provides a comprehensive guide on how to use the conversion tools, compile the .docx documents, and interpret the Excel graphs.
-- `convert_pdf_to_docx.py`: A Python script that lists all PDF files in the current directory, allows the user to select a file for conversion, and converts its content into .docx format while preserving the initial format and tables. This script utilizes libraries such as pdf2docx to process PDF content efficiently.
+- `README.md`: Provides a comprehensive guide on how to use the conversion tools, compile the .docx documents, interpret the Excel graphs, and extract images from PDFs to save them as .png files.
+- `convert_pdf_to_docx.py`: A Python script that lists all PDF files in the current directory, allows the user to select a file for conversion, converts its content into .docx format while preserving the initial format and tables, and extracts images to save them as .png files in corresponding folders. This script utilizes libraries such as pdf2docx and PyMuPDF to process PDF content efficiently.
 - `analysis.docx`: A .docx file that contains a detailed explanation of all concepts derived from the PDF. This document is structured with sections for each concept and includes comments for clarity and future reference.
 - `graph.xlsx`: An Excel file that features a graph visually representing key data and concepts from the analysis. The graph is designed with clear labels on axes and data points for easy interpretation.
 
@@ -27,6 +27,6 @@ The `graph.xlsx` file contains an Excel graph that visually represents the key d
 
 ## Using the `convert_pdf_to_docx.py` Script
 
-As part of the conversion process, the script now creates a folder named "transformed file" in the current directory. Inside this folder, a new folder with the name of the converted file (minus the .docx extension) is created. The converted .docx file is then saved inside its corresponding named folder within "transformed file". This organization helps in managing the converted files more efficiently.
+As part of the conversion process, the script now creates a folder named "transformed file" in the current directory. Inside this folder, a new folder with the name of the converted file (minus the .docx extension) is created. The converted .docx file and extracted .png images are then saved inside their corresponding named folder within "transformed file". This organization helps in managing the converted files and images more efficiently.
 
-By utilizing these tools, users can efficiently convert PDF documents into detailed .docx analyses and visually represent data through Excel graphs, enhancing the understanding and presentation of complex concepts.
+By utilizing these tools, users can efficiently convert PDF documents into detailed .docx analyses, extract images as .png files, and visually represent data through Excel graphs, enhancing the understanding and presentation of complex concepts.

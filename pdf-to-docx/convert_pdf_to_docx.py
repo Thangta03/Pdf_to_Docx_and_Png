@@ -1,4 +1,5 @@
 import os
+import fitz  # PyMuPDF
 from pdf2docx import Converter
 
 def list_pdf_files():
@@ -13,6 +14,23 @@ def select_pdf_file(pdf_files):
         print(f"{i + 1}. {file}")
     choice = int(input("Enter the number of the PDF file you want to convert: ")) - 1
     return pdf_files[choice]
+
+def extract_images_from_pdf(pdf_file):
+    """Extract images from the PDF and save them as .png files."""
+    doc = fitz.open(pdf_file)
+    image_dir = os.path.splitext(pdf_file)[0] + "_images"
+    if not os.path.exists(image_dir):
+        os.makedirs(image_dir)
+    
+    for i in range(len(doc)):
+        for img in doc.get_page_images(i):
+            xref = img[0]
+            base_image = doc.extract_image(xref)
+            image_bytes = base_image["image"]
+            image_filename = f"{image_dir}/image_page_{i + 1}_xref_{xref}.png"
+            with open(image_filename, "wb") as image_file:
+                image_file.write(image_bytes)
+    print(f"Extracted images from '{pdf_file}' to '{image_dir}' successfully.")
 
 def convert_pdf_to_docx(pdf_file):
     """Convert the selected PDF to a .docx file while preserving the initial format and tables."""
@@ -33,6 +51,9 @@ def convert_pdf_to_docx(pdf_file):
     cv.convert(docx_file, start=0, end=None)
     cv.close()
     print(f"Converted '{pdf_file}' to '{docx_file}' successfully.")
+    
+    # Extract and save images from the PDF
+    extract_images_from_pdf(pdf_file)
 
 def main():
     pdf_files = list_pdf_files()
