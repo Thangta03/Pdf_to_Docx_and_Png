@@ -1,0 +1,4 @@
+{
+  "api_url": "https://api.gemini.com/v1/analysis",
+  "api_key": "your_api_key_here"
+}
