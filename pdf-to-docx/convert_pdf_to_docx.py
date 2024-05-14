@@ -3,14 +3,19 @@ import subprocess
 import sys
 
 def install_missing_packages():
-    """Check and install missing packages."""
+    """Check and install missing packages with enhanced error handling."""
     try:
         import fitz  # PyMuPDF
         import pdf2docx
     except ImportError as e:
         missing_package = str(e).split(" ")[-1]
-        print(f"Installing missing package: {missing_package}")
-        subprocess.check_call([sys.executable, "-m", "pip", "install", missing_package])
+        print(f"Attempting to install missing package: {missing_package}")
+        try:
+            subprocess.check_call([sys.executable, "-m", "pip", "install", missing_package])
+            print(f"Package {missing_package} installed successfully.")
+        except subprocess.CalledProcessError as e:
+            print(f"Failed to install {missing_package}. Please install it manually. Error: {e}")
+            sys.exit(1)
 
 def list_pdf_files():
     """List all PDF files in the current directory."""
@@ -38,8 +43,11 @@ def extract_images_from_pdf(pdf_file):
         import fitz  # PyMuPDF
         doc = fitz.open(pdf_file)
         image_dir = os.path.splitext(pdf_file)[0] + "_images"
+        # Check if the directory already exists before creating it
         if not os.path.exists(image_dir):
             os.makedirs(image_dir)
+        else:
+            print(f"Directory '{image_dir}' already exists. Images will be saved in this directory.")
     except Exception as e:
         print(f"An error occurred while creating the directory '{image_dir}': {e}")
         return
@@ -61,8 +69,11 @@ def convert_pdf_to_docx(pdf_file):
         from pdf2docx import Converter
         # Create "transformed file" directory if it does not exist
         transformed_dir = "transformed file"
+        # Check if the directory already exists before creating it
         if not os.path.exists(transformed_dir):
             os.makedirs(transformed_dir)
+        else:
+            print(f"Directory '{transformed_dir}' already exists. The converted file will be saved in this directory.")
     except Exception as e:
         print(f"An error occurred while creating the directory '{transformed_dir}': {e}")
         return
@@ -71,8 +82,11 @@ def convert_pdf_to_docx(pdf_file):
         # Create a new folder named after the converted file (without the .docx extension) inside the "transformed file" directory
         file_name_without_extension = os.path.splitext(pdf_file)[0]
         final_dir = os.path.join(transformed_dir, file_name_without_extension)
+        # Check if the directory already exists before creating it
         if not os.path.exists(final_dir):
             os.makedirs(final_dir)
+        else:
+            print(f"Directory '{final_dir}' already exists. The converted file and images will be saved in this directory.")
     except Exception as e:
         print(f"An error occurred while creating the directory '{final_dir}': {e}")
         return
