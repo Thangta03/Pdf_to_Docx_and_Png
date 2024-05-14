@@ -1,6 +1,12 @@
 import os
+import json
 from docx import Document
 import requests
+
+def load_api_config():
+    """Load Gemini API configuration from a JSON file."""
+    with open('docx-to-docx/gemini_api_config.json') as config_file:
+        return json.load(config_file)
 
 def read_docx(file_path):
     """Read and return the text from a DOCX file."""
@@ -16,9 +22,11 @@ def write_docx(content, output_path):
     doc.add_paragraph(content)
     doc.save(output_path)
 
-def process_docx_files(directory, api_url, api_key):
+def process_docx_files(directory):
     """Process all DOCX files in the given directory with the Gemini API."""
-    headers = {'Authorization': f"Bearer {api_key}"}
+    api_config = load_api_config()
+    api_url = api_config['api_url']
+    headers = {'Authorization': f"Bearer {api_config['api_key']}"}
 
     for file_name in os.listdir(directory):
         if file_name.endswith('.docx'):
@@ -35,6 +43,4 @@ def process_docx_files(directory, api_url, api_key):
 
 if __name__ == "__main__":
     directory = input("Enter the directory path containing DOCX files to process: ")
-    api_url = input("Enter the Gemini API URL: ")
-    api_key = input("Enter your Gemini API key: ")
-    process_docx_files(directory, api_url, api_key)
+    process_docx_files(directory)

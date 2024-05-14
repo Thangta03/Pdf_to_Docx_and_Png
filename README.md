@@ -29,4 +29,16 @@ The `graph.xlsx` file contains an Excel graph that visually represents the key d
 
 As part of the conversion process, the script now creates a folder named "transformed file" in the current directory. Inside this folder, a new folder with the name of the converted file (minus the .docx extension) is created. The converted .docx file and extracted .png images are then saved inside their corresponding named folder within "transformed file". This organization helps in managing the converted files and images more efficiently.
 
-By utilizing these tools, users can efficiently convert PDF documents into detailed .docx analyses, extract images as .png files, and visually represent data through Excel graphs, enhancing the understanding and presentation of complex concepts.
+## Processing .docx Files with the Gemini API
+
+To further enhance the capabilities of this toolkit, we have integrated the Gemini API for processing .docx files. This addition allows users to automatically analyze and process .docx files in a specified directory, leveraging the Gemini API's powerful analysis capabilities to generate new .docx files with the processed content.
+
+### Setting Up and Using the Gemini API
+
+1. Obtain an API key from Gemini by signing up on their platform.
+2. Store your API key and other configuration details in the `docx-to-docx/gemini_api_config.json` file.
+3. Use the `docx-to-docx/GeminiAPI_docx_processor.py` script to process .docx files. Simply run the script and follow the prompts to specify the directory containing your .docx files.
+
+This process will read each .docx file in the specified directory, send the content to the Gemini API for analysis, and save the processed content back into new .docx files within the same directory, enabling a seamless workflow for document analysis and processing.
+
+By utilizing these tools, users can efficiently convert PDF documents into detailed .docx analyses, extract images as .png files, visually represent data through Excel graphs, and leverage the Gemini API for advanced document processing, enhancing the understanding and presentation of complex concepts.
