@@ -2,6 +2,10 @@
 
 This repository now includes a set of tools designed to facilitate the conversion of PDF documents into .docx format and the extraction of images from PDFs to save them as .png files. This allows for a detailed analysis of concepts with the added benefit of creating visual representations through Excel graphs and organizing images in corresponding folders.
 
+## Update 16th May
+
+We have addressed the previously unsuccessful merge issue for .png extraction and are excited to announce the creation of a new project for extracting data from .docx files. The merge issue was resolved by refining our image extraction process, ensuring that images are now correctly extracted as .png files without any merge conflicts. The new project, focused on .docx data extraction, aims to streamline the process of extracting textual data from .docx files, making it easier to analyze and manipulate document content. This project includes a set of tools and scripts designed to efficiently extract data and save it in a structured format.
+
 ## pdf-to-docx Directory
 
 Within the `pdf-to-docx` directory, you will find several key components that make up the conversion toolkit:
